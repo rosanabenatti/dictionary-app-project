@@ -20,7 +20,6 @@ export default function Meaning(props) {
         );
       })}
 
-      {/* Now render synonyms from props.meaning.synonyms */}
       {props.meaning.synonyms && props.meaning.synonyms.length > 0 && (
         <div>
           <strong>Synonyms:</strong>
