@@ -1,4 +1,3 @@
-/* General Body Styling */
 body {
   background: #f9f7fe;
   font-family: "Cerebri-Sans", Helvetica, Arial, sans-serif;
@@ -7,27 +6,23 @@ body {
   box-sizing: border-box;
 }
 
-/* Main container for the app */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Header styling */
 .App-header {
   margin: 40px 0;
   text-align: center;
 }
 
-/* Logo styling for different devices */
 .App-logo {
   max-width: 300px;
   display: block;
   margin: 0 auto;
 }
 
-/* Footer styling */
 .App-footer {
   text-align: center;
   margin: 30px 0;
@@ -35,16 +30,14 @@ body {
   color: #666;
 }
 
-/* Main styling */
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 20px;
 }
 
-/* Global Responsive Typography */
 h2 {
   font-size: 2rem;
   font-weight: bold;
@@ -63,7 +56,6 @@ p {
   color: #333;
 }
 
-/* Input styling for search box */
 input[type="search"] {
   width: 100%;
   max-width: 600px;
@@ -75,7 +67,6 @@ input[type="search"] {
   box-sizing: border-box;
 }
 
-/* Hint styling */
 .hint {
   font-size: 12px;
   color: #666;
@@ -83,7 +74,6 @@ input[type="search"] {
   text-align: center;
 }
 
-/* Responsive Design for Logo and Layout */
 @media (min-width: 1024px) {
   .App-logo {
     max-width: 400px;
@@ -132,7 +122,6 @@ input[type="search"] {
   }
 }
 
-/* Button styling for audio playback */
 button {
   background-color: #6a0dad;
   color: white;
@@ -149,7 +138,6 @@ button:hover {
   background-color: #53118f;
 }
 
-/* Synonyms styling */
 ul.Synonyms {
   list-style-type: none;
   padding-left: 0;
@@ -166,7 +154,6 @@ ul.Synonyms li {
   color: #555;
 }
 
-/* Section styling for meaning and results */
 section {
   background: white;
   padding: 20px;
