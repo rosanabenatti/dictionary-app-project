@@ -1,10 +1,9 @@
 /* Container for phonetic audio + text */
-.Phonetic-pair {
-  display: grid;
-  grid-template-columns: 50px auto; /* Two columns: fixed button size, flexible text size */
-  align-items: center; /* Vertical alignment of button and text */
-  gap: 10px; /* Space between button and text */
-  margin-bottom: 15px; /* Space between multiple phonetic entries */
+.Phonetic-first-row {
+  display: flex;
+  align-items: center; /* Vertically align button and text */
+  gap: 10px; /* Space between button and word */
+  margin-bottom: 5px; /* Space between the first row and the transcription */
 }
 
 /* Audio button styling */
@@ -12,7 +11,7 @@
   background-color: #6a0dad;
   color: white;
   padding: 10px;
-  border-radius: 50%;
+  border-radius: 50%; /* Round button */
   border: none;
   cursor: pointer;
   font-size: 18px;
@@ -22,30 +21,49 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  margin: 0;
 }
 
-/* Hover effect */
+/* Placeholder for missing audio button */
+.Phonetic-placeholder {
+  width: 45px;
+  height: 45px;
+}
+
+/* Button hover effect */
 .Phonetic-audio:hover {
   background-color: #53118f;
 }
 
-/* Phonetic text styling */
+/* Word next to the button */
+.Phonetic-word {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Second row: phonetic transcription */
 .Phonetic-text {
   font-size: 18px;
   color: #555;
-  white-space: nowrap; /* Prevents text from wrapping */
+  margin-top: 5px;
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 480px) {
-  .Phonetic-pair {
+  .Phonetic-first-row {
     gap: 8px;
   }
 
-  .Phonetic-audio {
+  .Phonetic-audio,
+  .Phonetic-placeholder {
     width: 40px;
     height: 40px;
     font-size: 16px;
+  }
+
+  .Phonetic-word {
+    font-size: 20px;
   }
 
   .Phonetic-text {

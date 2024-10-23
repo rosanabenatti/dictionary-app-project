@@ -4,8 +4,8 @@ import "./Phonetic.css";
 export default function Phonetic(props) {
   return (
     <div className="Phonetic">
-      <div className="Phonetic-pair">
-        {/* Render the audio button */}
+      {/* First row: audio button only (without the word) */}
+      <div className="Phonetic-first-row">
         {props.phonetic.audio && (
           <button
             className="Phonetic-audio"
@@ -17,12 +17,12 @@ export default function Phonetic(props) {
             🔊
           </button>
         )}
-
-        {/* Render the phonetic text */}
-        {props.phonetic.text && (
-          <span className="Phonetic-text">{props.phonetic.text}</span>
-        )}
       </div>
+
+      {/* Second row: phonetic transcription */}
+      {props.phonetic.text && (
+        <div className="Phonetic-text">{props.phonetic.text}</div>
+      )}
     </div>
   );
 }
