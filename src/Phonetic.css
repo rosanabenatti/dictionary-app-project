@@ -1,0 +1,60 @@
+.Phonetic-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the audio button and the text */
+}
+
+/* Styling for the audio button */
+.Phonetic-audio button {
+  background-color: #6a0dad;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.Phonetic-audio button:hover {
+  background-color: #53118f;
+}
+
+/* Second column styling: word and transcription */
+.Phonetic-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.Phonetic-text .word {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Phonetic-text .transcription {
+  font-size: 18px;
+  color: #555;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 480px) {
+  .Phonetic-text .word {
+    font-size: 20px;
+  }
+
+  .Phonetic-text .transcription {
+    font-size: 16px;
+  }
+
+  .Phonetic-audio button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
