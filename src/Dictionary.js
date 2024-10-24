@@ -1,59 +1,85 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
+import Images from "./Images";
 import "./Dictionary.css";
 
-export default function Dictionary() {
-  let [keyword, setKeyword] = useState("");
+export default function Dictionary(props) {
+  let [keyword, setKeyword] = useState(props.defaultKeyword || "dictionary");
   let [results, setResults] = useState(null);
+  let [images, setImages] = useState([]);
+  let [loaded, setLoaded] = useState(false);
 
-  // Handle the dictionary API response
   function handleResponse(response) {
     setResults(response.data[0]);
   }
 
-  // Handle the Pexels API response (for images)
-  function handlePexelsResponse(response) {
-    console.log(response.data); // This will display the images in the console for now
+  function handleSheCodesImageResponse(response) {
+    console.log(response);
+    setImages(response.data.photos);
   }
 
-  // Search both the dictionary and Pexels APIs
-  function search(event) {
-    event.preventDefault();
+  function search() {
+    if (!keyword) {
+      alert("Please enter a valid keyword!");
+      return;
+    }
 
-    // Dictionary API
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
-    axios.get(apiUrl).then(handleResponse); // Corrected to use handleResponse
+    axios
+      .get(apiUrl)
+      .then(handleResponse)
+      .catch((error) => {
+        console.error("Dictionary API Error:", error);
+      });
 
-    // Pexels API for images
-    let pexelsApiKey =
-      "VwnVtqLMtKa0sxV0ef6MzVeUUTw7mKhR1Zg8Nzk3m10xtn7V93fBm0py";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=4`; // Fetch 4 images
-    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
-    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
+    let sheCodesApiKey = "83f9b46743o5b9ba5591000677t89ea4";
+    let sheCodesApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyword}&key=${sheCodesApiKey}`;
+    axios
+      .get(sheCodesApiUrl)
+      .then(handleSheCodesImageResponse)
+      .catch((error) => {
+        console.error("SheCodes API Error:", error);
+        alert("There was an error fetching the image from SheCodes.");
+      });
   }
 
-  // Handle input change
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
 
-  return (
-    <div className="Dictionary">
-      <section>
-        <h1>What word do you want to look up?</h1>
-        <form onSubmit={search}>
-          <input
-            type="search"
-            onChange={handleKeywordChange}
-            placeholder="Search for a word"
-          />
-        </form>
-        <div className="hint">
-          Suggested words: sunset, wine, yoga, forest...
-        </div>
-      </section>
-      <Results results={results} />
-    </div>
-  );
+  function load() {
+    setLoaded(true);
+    search();
+  }
+
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <h1>What word do you want to look up?</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              onChange={handleKeywordChange}
+              defaultValue={props.defaultKeyword || ""}
+            />
+          </form>
+          <div className="hint">
+            Suggested words: sunset, wine, yoga, forest...
+          </div>
+        </section>
+        <Results results={results} />
+        <Images images={images} />
+      </div>
+    );
+  } else {
+    load();
+    return "Loading";
+  }
 }

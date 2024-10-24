@@ -5,7 +5,6 @@ import "./Results.css";
 
 export default function Results(props) {
   if (props.results) {
-    // Find the first phonetic with both audio and transcription
     const firstPhoneticWithAudio = props.results.phonetics.find(
       (phonetic) => phonetic.audio && phonetic.text
     );
@@ -15,7 +14,6 @@ export default function Results(props) {
         <section>
           <h2>{props.results.word}</h2>
 
-          {/* Render the first valid phonetic with audio and transcription */}
           {firstPhoneticWithAudio && (
             <Phonetic
               phonetic={firstPhoneticWithAudio}
@@ -24,7 +22,6 @@ export default function Results(props) {
           )}
         </section>
 
-        {/* Loop through meanings */}
         {props.results.meanings.map(function (meaning, index) {
           return (
             <section key={index}>
