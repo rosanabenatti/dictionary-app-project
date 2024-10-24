@@ -13,7 +13,32 @@ function App() {
           <Dictionary />
         </main>
         <footer className="App-footer">
-          <small>Coded by Rosana Benatti</small>
+          <small>
+            This project was coded by{" "}
+            <a
+              href="https://github.com/rosanabenatti"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Rosana Benatti
+            </a>{" "}
+            and is{" "}
+            <a
+              href="https://github.com/rosanabenatti/dictionary-app-project"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              open-sourced on GitHub
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://dictionaryapptool.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              hosted on Netlify.
+            </a>
+          </small>
         </footer>
       </div>
     </div>
